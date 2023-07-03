@@ -6,6 +6,7 @@ from statsmodels.stats.outliers_influence import variance_inflation_factor
 from statsmodels.stats.stattools import durbin_watson
 from statsmodels.stats.diagnostic import het_breuschpagan
 from scipy import stats
+
 # Génération de données aléatoires
 np.random.seed(0) # pour la reproductibilité
 X1 = np.random.rand(100)
@@ -59,7 +60,7 @@ print(dict(zip(labels, bp_test)))
 
 # Calculer la statistique de test de Jarque-Bera et la p-valeur
 jb_stats = stats.jarque_bera(results.resid)
-jb_stats
+print(jb_stats)
 
 #colinearite
 # Calcul du VIF
@@ -67,3 +68,5 @@ VIF = pd.DataFrame()
 VIF["Variable"] = X.columns
 VIF["VIF"] = [variance_inflation_factor(X.values, i) for i in range(X.shape[1])]
 print(VIF)
+
+#realisation des differents test
